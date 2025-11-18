@@ -34,18 +34,20 @@ st.dataframe(old_df)
 uploaded_file = st.file_uploader("", type="csv")
 if uploaded_file:
 
-    with st.spinner("Merging..."):
-        # merge datasets
-        new_df = pd.read_csv(uploaded_file)
-        merged_df, new_rows_df = merge_csv(old_df, new_df, save=False)
+    empty1, col1, empty2 = st.columns([1, 2, 1])
+    with col1:
+        with st.spinner("Merging..."):
+            # merge datasets
+            new_df = pd.read_csv(uploaded_file)
+            merged_df, new_rows_df = merge_csv(old_df, new_df, save=False)
 
-        # replace nans with empty strings to avoid error
-        merged_df_clean = merged_df.replace([np.inf, -np.inf], np.nan)
-        merged_df_clean = merged_df_clean = merged_df_clean.fillna('')
+            # replace nans with empty strings to avoid error
+            merged_df_clean = merged_df.replace([np.inf, -np.inf], np.nan)
+            merged_df_clean = merged_df_clean = merged_df_clean.fillna('')
 
-        # update google sheet
-        worksheet.clear()
-        worksheet.update([merged_df_clean.columns.values.tolist()] + merged_df_clean.values.tolist())
+            # update google sheet
+            worksheet.clear()
+            worksheet.update([merged_df_clean.columns.values.tolist()] + merged_df_clean.values.tolist())
 
     st.success("Merged CSV saved and updated!")
     st.text("")
