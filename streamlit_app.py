@@ -34,7 +34,7 @@ st.dataframe(old_df)
 uploaded_file = st.file_uploader("", type="csv")
 if uploaded_file:
 
-    empty1, col1, empty2 = st.columns([1, 2, 1])
+    empty1, col1, empty2 = st.columns([1, 1, 1])
     with col1:
         with st.spinner("Merging..."):
             # merge datasets
