@@ -1,13 +1,15 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import json
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from modules.merge_csv import merge_csv
 
 # connecting to google sheets 
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
+creds_dict = json.loads(st.secrets["google_service_account"]["creds_json"])
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 gc = gspread.authorize(creds)
 
 # opening sheet
