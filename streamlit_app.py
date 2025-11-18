@@ -62,4 +62,4 @@ if uploaded_file:
     with col1:
         st.download_button("Download Merged CSV", csv, "merged_data.csv", "text/csv")
     with col2:
-        st.download_button("Download New Data Only CSV", new_csv, "new_data.csv", "text/csv")
+        st.download_button("Download New Data CSV", new_csv, "new_data.csv", "text/csv")
