@@ -89,7 +89,7 @@ def run():
         states = stats_by_state(data)
         st.dataframe(states)
 
-        threshold = 0.02
+        threshold = 0.01
 
         df_big = states[states["Donors"] / states["Donors"].sum() >= threshold]
         df_small = states[states["Donors"] / states["Donors"].sum() < threshold]
