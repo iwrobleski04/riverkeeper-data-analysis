@@ -174,7 +174,6 @@ def stats_by_state(df: pd.DataFrame) -> pd.DataFrame:
 
     # sort and format
     res = res.sort_values(by=["Donors", "Total Gifts (All Time)", "State"], ascending=[False, False, True])
-    res["Total Gifts (All Time)"] = res["Total Gifts (All Time)"].apply(lambda x: "${:,.2f}".format(x))
     return res
 
 def stats_by_city(df: pd.DataFrame) -> pd.DataFrame:
