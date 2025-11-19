@@ -2,5 +2,5 @@
 primaryColor = '#027DA4' # Accent color for interactive elements
 backgroundColor = '#212529' # Background color for the main content area
 secondaryBackgroundColor = '#2A756C' # Background color for sidebar and most widgets
-textColor = '#faedcd'
+textColor = '#f5ebe0'
 font = "serif"
