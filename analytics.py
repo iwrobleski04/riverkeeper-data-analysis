@@ -5,6 +5,7 @@ import json
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from modules.data_analysis import *
+import plotly.express as px
 
 st.set_page_config(
     page_title="Donor Analytics",
@@ -87,7 +88,9 @@ def run():
         
         states = stats_by_state(data)
         st.dataframe(states)
-        st.space(size="small")
+
+        fig = px.pie(states, names="State", values="Donors")
+        st.plotly_chart(fig)
 
         st.markdown("<h4 style='text-align: center;'>Donors by City</h4>", unsafe_allow_html=True)
         st.write("**Donors:** Number of unique donors in the city  \
