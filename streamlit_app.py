@@ -11,10 +11,16 @@ st.set_page_config(
     page_icon="📁",
 )
 
-def page_2():
-    st.title("Page 2")
+pages = {
+    "Dataset Merger": [
+        st.Page("streamlit_app.py", title="merge data")
+    ],
+    "Analytics": [
+        st.Page("analytics.py", title="Learn about us"),
+    ],
+}
 
-pg = st.navigation(["page_1.py", page_2])
+pg = st.navigation(pages)
 pg.run()
 
 # connecting to google sheets 
