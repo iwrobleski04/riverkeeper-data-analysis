@@ -53,12 +53,13 @@ def run():
         st.space(size="small")
 
         st.markdown("<h4 style='text-align: center;'>Basic Statistics for Active Donors</h4>", unsafe_allow_html=True)
-        st.write("An **active donor** is a donor who has donated at least once within the past 18 months.")
+        st.write("**Active Donor:** Donor who has donated at least once within the past 18 months.")
         stats_active = active_donors(data)
         st.dataframe(stats_active)
         st.space(size="small")
         
         st.markdown("<h4 style='text-align: center;'>Basic Statistics for Inactive Donors</h4>", unsafe_allow_html=True)
+        st.write("**Inactive Donor:** Donor who has not donated within the past 18 months.")
         stats_inactive = inactive_donors(data)
         st.dataframe(stats_inactive)
 
