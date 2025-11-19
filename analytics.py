@@ -67,13 +67,15 @@ def run():
                 \n**Donors:** Number of unique donors in the state  \
                 \n**Total Gifts (All Time):** Total donated from the state  \
                 \n**Number of Gifts Past 18 Months:** Number of donations in the past 18 months from the state")
+        
         states = stats_by_state(data)
-
         st.dataframe(states)
-
         st.space(size="small")
 
         st.markdown("<h4 style='text-align: center;'>Donors by City</h4>", unsafe_allow_html=True)
+        st.write("**Donors:** Number of unique donors in the city  \
+                \n**Total Gifts (All Time):** Total donated from the city  \
+                \n**Number of Gifts Past 18 Months:** Number of donations in the past 18 months from the city")
         cities = stats_by_city(data)
         st.dataframe(cities)
 
