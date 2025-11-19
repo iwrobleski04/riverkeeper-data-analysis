@@ -33,7 +33,7 @@ def run():
             "Basic Statistics",
             "Top Donors",
             "Donors by Location",
-            "Donors by Time"
+            "Donors by Date"
         ])
 
     with tab1:
