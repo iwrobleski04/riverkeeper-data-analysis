@@ -29,8 +29,9 @@ def clean(df: pd.DataFrame) -> None:
     df["Number of Gifts Past 18 Months"] = pd.to_numeric(df["Number of Gifts Past 18 Months"])
     df["Last Gift Date"] = pd.to_datetime(df["Last Gift Date"])
     df["Last Gift Date"] = df["Last Gift Date"].dt.date
-    df = df.replace("", np.nan)
     df = categorize_donors(df)
+    df = df.replace("", np.nan)
+
 
 # basic stats
 
@@ -160,6 +161,7 @@ def stats_by_state(df: pd.DataFrame) -> pd.DataFrame:
         most recent donation date
     '''
     # copy data and drop rows where there is no state
+    df["State"] = df["State"].replace("", np.nan)
     data = df.copy().dropna(subset=["State"])
 
     # group by city and create dataframe
