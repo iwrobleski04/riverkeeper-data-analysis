@@ -108,10 +108,10 @@ def run():
         st.markdown("<h4 style='text-align: center;'>Donors by Year</h4>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Years and the number of donors whose last donation was in that year.</p>", unsafe_allow_html=True)
         yearly = stats_by_year(data)
-        st.bar_chart(yearly)
+        st.bar_chart(yearly, color="#007633")
 
         st.space(size="small")
         st.markdown("<h4 style='text-align: center;'>Donors by Month</h4>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Months and the number of donors whose last donation was in that month.</p>", unsafe_allow_html=True)
         monthly = stats_by_month(data)
-        st.bar_chart(monthly, sort=False)
+        st.bar_chart(monthly, color="#007633", sort=False)
