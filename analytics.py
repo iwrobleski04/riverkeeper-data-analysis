@@ -90,8 +90,8 @@ def run():
         st.dataframe(states)
         st.space(size="small")
 
-        # separating out states with 1% of donors from the rest for pie chart
-        threshold = 0.009
+        # separating out states with .85% of donors from the rest for pie chart
+        threshold = 0.0085
         states_pie = states[states["Donors"] / states["Donors"].sum() >= threshold]
         other_states = states[states["Donors"] / states["Donors"].sum() < threshold]
         other_total = other_states["Donors"].sum()
@@ -101,7 +101,6 @@ def run():
         st.markdown("<h4 style='text-align: center;'>Percentage of Donors from Each State</h4>", unsafe_allow_html=True)
         fig = px.pie(states_pie, names=states_pie.index, values="Donors",  color_discrete_sequence=px.colors.qualitative.Prism)
         st.plotly_chart(fig)
-        st.space(size="small")
 
         st.markdown("<h4 style='text-align: center;'>Donors by City</h4>", unsafe_allow_html=True)
         st.write("**Donors:** Number of unique donors in the city  \
