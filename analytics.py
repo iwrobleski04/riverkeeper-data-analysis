@@ -63,6 +63,7 @@ def run():
         st.space(size="medium")
 
         st.markdown("<h4 style='text-align: center;'>Donors by State</h4>", unsafe_allow_html=True)
+        st.write("Cities: Number of unique cities donated from in the state")
         states = stats_by_state(data)
 
         st.dataframe(states)
