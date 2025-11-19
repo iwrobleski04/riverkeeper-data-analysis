@@ -96,12 +96,8 @@ def run():
         other_total = other_states["Donors"].sum()
         states_pie.loc["Other"] = other_total
 
-        states_no_other = states_pie[states_pie.index != "Other"]
-        states_other = states_pie[states_pie.index == "Other"]
-        states_ordered = pd.concat([states_no_other, states_other])
-
         # pie chart of states and donors
-        fig = px.pie(states_pie, names=states_ordered, values="Donors")
+        fig = px.pie(states_pie, names=states_pie.index, values="Donors")
         st.plotly_chart(fig)
 
         st.markdown("<h4 style='text-align: center;'>Donors by City</h4>", unsafe_allow_html=True)
