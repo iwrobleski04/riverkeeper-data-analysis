@@ -5,6 +5,7 @@ import json
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from modules.data_analysis import *
+import calendar
 
 st.set_page_config(
     page_title="Donor Analytics",
@@ -75,5 +76,5 @@ def run():
 
         st.markdown("<h5 style='text-align: center;'>Donors by Year</h5>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Months and the number of donors whose last donation was in that month.</p>", unsafe_allow_html=True)
-        monthly = stats_by_month(data)
+        monthly = stats_by_month(data, x=calendar.month_abbr)
         st.bar_chart(monthly)
