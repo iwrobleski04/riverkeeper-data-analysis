@@ -65,14 +65,13 @@ def run():
         st.markdown("<h4 style='text-align: center;'>Donors by State</h4>", unsafe_allow_html=True)
         states = stats_by_state(data)
 
-        empty_rows = states[states.isna().all(axis=1)]
-        st.write("Empty rows:", empty_rows)
-
-        # Or rows that have empty index or first column
-        st.write(states[states.iloc[:,0].astype(str).str.strip() == ''])
-
-        st.table(states)
-        st.dataframe(states)
+        st.dataframe(
+            states.style.format({
+                'Count1': '{:,}',
+                'Revenue': '${:,.2f}',
+                'Count2': '{:,}'
+            })
+        )
 
         st.space(size="small")
 
