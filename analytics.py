@@ -38,6 +38,9 @@ def run():
 
     with tab1:
         st.markdown("<h2 style='text-align: center;'>Basic Statistics</h2>", unsafe_allow_html=True)
+        st.space(size="medium")
+
+
         st.write("**Donors:** Number of unique donors  \
                 \n**Total Donation Amount:** Total donated among all donors  \
                 \n**Average Total Donation:** Average total donation per donor  \
@@ -62,6 +65,7 @@ def run():
 
     with tab2:
         st.markdown("<h2 style='text-align: center;'>Top Donors</h2>", unsafe_allow_html=True)
+        st.space(size="medium")
         
         st.markdown("<h4 style='text-align: center;'>Top 50 Donors by Total Amount Donated</h4>", unsafe_allow_html=True)
         top_amt = top_donors(data, 50)
