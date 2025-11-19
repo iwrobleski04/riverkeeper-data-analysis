@@ -72,7 +72,7 @@ def run():
         st.dataframe(top_amt)
         st.space(size="small")
 
-        col1, empty, col2 = st.columns([2, 1, 2])
+        col1, empty, col2 = st.columns([3, 1, 3])
         
         with col1:
             top_amt["Status"] = top_amt["Number of Gifts Past 18 Months"].apply(lambda x: "Active" if x>0 else "Inactive")

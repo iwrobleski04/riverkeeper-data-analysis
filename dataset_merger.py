@@ -9,6 +9,7 @@ from modules.merge_csv import merge_csv
 st.set_page_config(
     page_title="Dataset Merger",
     page_icon="📁",
+    layout="wide"
 )
 
 def run():
