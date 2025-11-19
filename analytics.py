@@ -62,13 +62,12 @@ def run():
         st.space(size="medium")
 
         st.markdown("<h4 style='text-align: center;'>Donors by State</h4>", unsafe_allow_html=True)
-        st.markdown("<ul style='text-align: center;'><li> Number of unique cities donated from</li><li>Number of donors</li><li>Total donations</li><li>Donations in the past 18 Months</li></ul>", unsafe_allow_html=True)
         states = stats_by_state(data)
         st.dataframe(states)
 
         st.space(size="small")
-        st.markdown("<h4 style='text-align: center;'>Donors by Month</h4>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Months and the number of donors whose last donation was in that month.</p>", unsafe_allow_html=True)
+        
+        st.markdown("<h4 style='text-align: center;'>Donors by City</h4>", unsafe_allow_html=True)
         cities = stats_by_city(data)
         st.dataframe(cities)
 
