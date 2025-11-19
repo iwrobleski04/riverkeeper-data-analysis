@@ -36,8 +36,8 @@ def run():
             "Active/Inactive Donors",
             "Top Donors",
             "Frequent Donors",
-            "Statistics by Location",
-            "Statistics by Time"
+            "Donors by Location",
+            "Donors by Time"
         ]
     )
 
@@ -57,12 +57,12 @@ def run():
         st.markdown("<h3 style='text-align: center;'>Frequent Donors</h3>", unsafe_allow_html=True)
         # Histograms...
 
-    elif page == "Statistics by Location":
-        st.markdown("<h3 style='text-align: center;'>Statistics by City and State</h3>", unsafe_allow_html=True)
+    elif page == "Donors by Location":
+        st.markdown("<h3 style='text-align: center;'>Donors by City and State</h3>", unsafe_allow_html=True)
         # Maps, regional charts...
 
-    elif page == "Statistics by Time":
-        st.markdown("<h2 style='text-align: center;'>Statistics by Month and Year</h2>", unsafe_allow_html=True)
+    elif page == "Donors by Time":
+        st.markdown("<h2 style='text-align: center;'>Donors by Month and Year</h2>", unsafe_allow_html=True)
         st.space(size="medium")
 
         st.markdown("<h4 style='text-align: center;'>Donors by Year</h4>", unsafe_allow_html=True)
