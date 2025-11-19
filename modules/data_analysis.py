@@ -123,7 +123,7 @@ def frequent_donors(df: pd.DataFrame, n: int) -> pd.DataFrame:
         last gift date,
         donations in past 18 months
     '''
-    sorted_donations = df.copy().sort_values(by="Number of Gifts Past 18 Months", ascending=False)
+    sorted_donations = df.copy().sort_values(by=["Number of Gifts Past 18 Months", "Total Gifts (All Time)"], ascending=False)
     frequent_donors = sorted_donations[:n].copy()
     frequent_donors["Total Gifts (All Time)"] = frequent_donors["Total Gifts (All Time)"].apply(lambda x: '${:,.2f}'.format(x))
     frequent_donors["Number of Gifts Past 18 Months"] = frequent_donors["Number of Gifts Past 18 Months"].astype(int)
