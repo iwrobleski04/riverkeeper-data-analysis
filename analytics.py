@@ -9,6 +9,7 @@ def run():
     st.markdown("<h1 style='text-align: center;'>Donor Analytics</h1>", unsafe_allow_html=True)
 
     page = st.sidebar.radio(
+        "Select a Category of Analytics:",
         [
             "Basic Statistics",
             "Active/Inactive Donors",
