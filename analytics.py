@@ -30,7 +30,6 @@ def run():
     data = worksheet.get_all_records()
     data = pd.DataFrame(data)
     clean(data)
-    st.dataframe(data)
 
     page = st.sidebar.radio(
         "Select a Category of Analytics:",
@@ -66,7 +65,12 @@ def run():
 
     elif page == "Statistics by Time":
         st.markdown("<h3 style='text-align: center;'>Statistics by Month and Year</h3>", unsafe_allow_html=True)
-        
+        st.text("")
+        st.text("")
+
+        st.markdown("<h5 style='text-align: center;'>Donors by Year</h5>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>This bar chart shows years and the number of donors whose last donation was in that year.</p>")
+
         col1, col2 = st.columns([1, 1])
         with col1:
             yearly = stats_by_year(data)
