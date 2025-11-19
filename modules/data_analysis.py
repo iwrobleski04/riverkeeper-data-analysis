@@ -218,6 +218,7 @@ def stats_no_location(df: pd.DataFrame) -> pd.DataFrame:
         Number of Gifts Past 18 Months
     '''
     res = pd.DataFrame(index = ["Country Only", "No Location"])
+    df = df.replace("", np.nan)
 
     # country only
     data = df[df["City"].isnull() & (df["State"].isnull()) & df["Country"].notnull()]
