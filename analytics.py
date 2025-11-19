@@ -1,4 +1,10 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
+import json
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+from modules.data_analysis import *
 
 st.set_page_config(
     page_title="Donor Analytics",
@@ -6,7 +12,24 @@ st.set_page_config(
 )
 
 def run():
+
     st.markdown("<h1 style='text-align: center;'>Donor Analytics</h1>", unsafe_allow_html=True)
+
+    # connecting to google sheets 
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds_dict = json.loads(st.secrets["google_service_account"]["creds_json"])
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+    gc = gspread.authorize(creds)
+
+    # opening sheet
+    sheet_name = "Riverkeeper_Donors"
+    sh = gc.open(sheet_name)
+    worksheet = sh.sheet1
+
+    # load data from sheet and clean
+    data = worksheet.get_all_records()
+    data = pd.DataFrame(data)
+    data = clean(data)
 
     page = st.sidebar.radio(
         "Select a Category of Analytics:",
@@ -42,4 +65,8 @@ def run():
 
     elif page == "Statistics by Time":
         st.markdown("<h3 style='text-align: center;'>Statistics by Month and Year</h3>", unsafe_allow_html=True)
-        # line charts, seasonality
+        
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            yearly = stats_by_year(data)
+            st.bar_chart(yearly)

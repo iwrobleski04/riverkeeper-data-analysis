@@ -4,7 +4,6 @@ from decimal import Decimal, getcontext
 import calendar
 
 getcontext().prec = 32
-df = pd.read_csv("data/merged_data.csv")
 
 def categorize_donors(df: pd.DataFrame) -> pd.Series:
     '''
@@ -112,7 +111,7 @@ def top_donors(df: pd.DataFrame, n: int) -> pd.DataFrame:
     top_donors.reset_index(drop=True, inplace=True)
     return top_donors[["Account ID", "City", "State", "Total Gifts (All Time)", "Last Gift Date", "Number of Gifts Past 18 Months"]]
 
-def frequent_donors(dp: pd.DataFrame, n: int) -> pd.DataFrame:
+def frequent_donors(df: pd.DataFrame, n: int) -> pd.DataFrame:
     '''
     returns n most frequent donors with 
         account id, 
@@ -245,15 +244,3 @@ def stats_by_month(df: pd.DataFrame) -> pd.DataFrame:
     res = pd.DataFrame({"Donors" : g["Account ID"].nunique()})
     res.index = calendar.month_abbr[1:]
     return res
-
-clean(df)
-print(basic_stats(df))
-print(active_donors(df))
-print(inactive_donors(df))
-print(top_donors(df, 15))
-print(frequent_donors(df, 20))
-print(stats_by_state(df))
-print(stats_by_city(df))
-print(stats_by_year(df))
-print(stats_by_month(df))
-print(stats_no_location(df))
