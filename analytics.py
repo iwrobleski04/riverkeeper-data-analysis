@@ -33,9 +33,7 @@ def run():
         "Select a Category of Analytics:",
         [
             "Basic Statistics",
-            "Active/Inactive Donors",
             "Top Donors",
-            "Frequent Donors",
             "Donors by Location",
             "Donors by Time"
         ]
@@ -45,17 +43,29 @@ def run():
         st.markdown("<h2 style='text-align: center;'>Basic Statistics</h2>", unsafe_allow_html=True)
         # KPIs, summary tables
 
-    elif page == "Active/Inactive Donors":
-        st.markdown("<h2 style='text-align: center;'>Active/Inactive Donors</h2>", unsafe_allow_html=True)
-        # Charts...
-
     elif page == "Top Donors":
         st.markdown("<h2 style='text-align: center;'>Top Donors</h2>", unsafe_allow_html=True)
-        # Leaderboards...
+        
+        st.markdown("<h4 style='text-align: center;'>Top Donors by Amount Donated</h4>", unsafe_allow_html=True)
+        st.write("**Cities:** Number of unique cities donated from in the state  \
+                \n**Donors:** Number of unique donors in the state  \
+                \n**Total Gifts (All Time):** Total donated from the state  \
+                \n**Number of Gifts Past 18 Months:** Number of donations in the past 18 months from the state")
+        
+        top_amt = top_donors(data, 50)
+        st.dataframe(top_amt)
+        st.space(size="small")
 
-    elif page == "Frequent Donors":
-        st.markdown("<h2 style='text-align: center;'>Frequent Donors</h2>", unsafe_allow_html=True)
-        # Histograms...
+        st.markdown("<h4 style='text-align: center;'>Top Donors by Donation Frequency</h4>", unsafe_allow_html=True)
+        st.write("**Cities:** Number of unique cities donated from in the state  \
+                \n**Donors:** Number of unique donors in the state  \
+                \n**Total Gifts (All Time):** Total donated from the state  \
+                \n**Number of Gifts Past 18 Months:** Number of donations in the past 18 months from the state")
+        
+        top_freq = frequent_donors(data, 50)
+        st.dataframe(top_freq)
+        st.space(size="small")
+
 
     elif page == "Donors by Location":
 
@@ -78,6 +88,7 @@ def run():
                 \n**Number of Gifts Past 18 Months:** Number of donations in the past 18 months from the city")
         cities = stats_by_city(data)
         st.dataframe(cities)
+        st.space(size="small")
 
         st.markdown("<h4 style='text-align: center;'>Donors Without Location</h4>", unsafe_allow_html=True)
         st.write("**Country Only:** Donors whose city _and_ state are not included  \
