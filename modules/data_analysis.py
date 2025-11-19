@@ -28,7 +28,6 @@ def clean(df: pd.DataFrame) -> None:
     df["Total Gifts (All Time)"] = pd.to_numeric(df["Total Gifts (All Time)"])
     df["Number of Gifts Past 18 Months"] = pd.to_numeric(df["Number of Gifts Past 18 Months"])
     df["Last Gift Date"] = pd.to_datetime(df["Last Gift Date"])
-    df["Last Gift Date"] = df["Last Gift Date"].dt.date
     df = categorize_donors(df)
 
 
@@ -110,6 +109,7 @@ def top_donors(df: pd.DataFrame, n: int) -> pd.DataFrame:
     sorted_donations = df.copy().sort_values(by="Total Gifts (All Time)", ascending=False)
     top_donors = sorted_donations[:n].copy()
     top_donors["Total Gifts (All Time)"] = top_donors["Total Gifts (All Time)"].apply(lambda x: '${:,.2f}'.format(x))
+    top_donors["Last Gift Date"] = top_donors["Last Gift Date"].dt.date
     top_donors["Number of Gifts Past 18 Months"] = top_donors["Number of Gifts Past 18 Months"].astype(int)
     top_donors.reset_index(drop=True, inplace=True)
     return top_donors[["Account ID", "City", "State", "Total Gifts (All Time)", "Last Gift Date", "Number of Gifts Past 18 Months"]]
@@ -128,6 +128,7 @@ def frequent_donors(df: pd.DataFrame, n: int) -> pd.DataFrame:
     sorted_donations = df.copy().sort_values(by=["Number of Gifts Past 18 Months", "Total Gifts (All Time)"], ascending=False)
     frequent_donors = sorted_donations[:n].copy()
     frequent_donors["Total Gifts (All Time)"] = frequent_donors["Total Gifts (All Time)"].apply(lambda x: '${:,.2f}'.format(x))
+    frequent_donors["Last Gift Date"] = frequent_donors["Last Gift Date"].dt.date
     frequent_donors["Number of Gifts Past 18 Months"] = frequent_donors["Number of Gifts Past 18 Months"].astype(int)
     frequent_donors.reset_index(drop=True, inplace=True)
     return frequent_donors[["Account ID", "City", "State", "Total Gifts (All Time)", "Last Gift Date", "Number of Gifts Past 18 Months"]]
