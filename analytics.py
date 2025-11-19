@@ -10,6 +10,7 @@ import plotly.express as px
 st.set_page_config(
     page_title="Donor Analytics",
     page_icon="📊",
+    layout="wide"
 )
 
 def run():
