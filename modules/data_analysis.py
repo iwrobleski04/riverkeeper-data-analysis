@@ -243,4 +243,5 @@ def stats_by_month(df: pd.DataFrame) -> pd.DataFrame:
     g = df.groupby(df["Last Gift Date"].dt.month.rename("Month"))
     res = pd.DataFrame({"Donors" : g["Account ID"].nunique()})
     res.index = calendar.month_abbr[1:]
+    res.index.name = "Month"
     return res
