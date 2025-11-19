@@ -71,10 +71,9 @@ def run():
         st.dataframe(top_amt)
         st.space(size="small")
 
-        st.markdown("<h4 style='text-align: center;'>Percentage of Active and Inactive Top Donors</h4>", unsafe_allow_html=True)
         top_amt["Status"] = top_amt["Number of Gifts Past 18 Months"].apply(lambda x: "Active" if x>0 else "Inactive")
         activity_counts = top_amt["Status"].value_counts()
-        fig = px.pie(states_pie, names=activity_counts.index, values=activity_counts.values,  color_discrete_sequence=px.colors.qualitative.Prism)
+        fig = px.pie(names=activity_counts.index, values=activity_counts.values, title="Percentage of Active and Inactive Top Donors", color_discrete_sequence=px.colors.qualitative.Prism)
         st.plotly_chart(fig)
 
         st.markdown("<h4 style='text-align: center;'>Top 50 Donors by Donation Frequency (Past 18 Months)</h4>", unsafe_allow_html=True)
@@ -104,8 +103,7 @@ def run():
         states_pie.loc["Other"] = other_total
 
         # pie chart of states and donors
-        st.markdown("<h4 style='text-align: center;'>Percentage of Donors from Each State</h4>", unsafe_allow_html=True)
-        fig = px.pie(states_pie, names=states_pie.index, values="Donors",  color_discrete_sequence=px.colors.qualitative.Prism)
+        fig = px.pie(states_pie, names=states_pie.index, values="Donors",  title="Percentage of Donors from Each State", color_discrete_sequence=px.colors.qualitative.Prism)
         st.plotly_chart(fig)
 
         st.markdown("<h4 style='text-align: center;'>Donors by City</h4>", unsafe_allow_html=True)
