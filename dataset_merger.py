@@ -30,7 +30,7 @@ def run():
     old_df = pd.DataFrame(data)
 
     st.markdown("<h1 style='text-align: center;'>Dataset Merger</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center;'>Upload the new dataset below to merge with the existing dataset.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'>Upload a new dataset below to merge with the existing dataset.</p>", unsafe_allow_html=True)
     st.space(size="small")
 
     # display existing data
