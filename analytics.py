@@ -65,8 +65,7 @@ def run():
 
     elif page == "Statistics by Time":
         st.markdown("<h3 style='text-align: center;'>Statistics by Month and Year</h3>", unsafe_allow_html=True)
-        st.text("")
-        st.text("")
+        st.space(size="medium")
 
         st.markdown("<h5 style='text-align: center;'>Donors by Year</h5>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Years and the number of donors whose last donation was in that year.</p>", unsafe_allow_html=True)

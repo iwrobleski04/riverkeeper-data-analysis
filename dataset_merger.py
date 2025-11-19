@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 def run():
-    
+
     # connecting to google sheets 
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     creds_dict = json.loads(st.secrets["google_service_account"]["creds_json"])
@@ -30,8 +30,8 @@ def run():
 
     st.markdown("<h1 style='text-align: center;'>Dataset Merger</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center;'>Upload the new dataset below to merge with the existing dataset.</p>", unsafe_allow_html=True)
-    st.text("")
-    st.text("")
+    st.space(size="small")
+
 
     # display existing data
     st.markdown("<p style='text-align: center;'>Existing Dataset:</p>", unsafe_allow_html=True)
@@ -54,8 +54,7 @@ def run():
         worksheet.update([merged_df_clean.columns.values.tolist()] + merged_df_clean.values.tolist())
 
         st.success("Merged CSV saved and updated!")
-        st.text("")
-        st.text("")
+        st.space(size="small")
 
         # display new data
         st.markdown("<p style='text-align: center;'>Merged Dataset:</p>", unsafe_allow_html=True)
