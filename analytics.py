@@ -63,6 +63,7 @@ def run():
 
         st.markdown("<h4 style='text-align: center;'>Donors by State</h4>", unsafe_allow_html=True)
         states = stats_by_state(data)
+        st.table(states)
         st.dataframe(states)
 
         st.space(size="small")
@@ -75,8 +76,8 @@ def run():
         st.markdown("<h2 style='text-align: center;'>Donors by Month and Year</h2>", unsafe_allow_html=True)
         st.space(size="medium")
 
-        #st.markdown("<h4 style='text-align: center;'>Donors by Year</h4>", unsafe_allow_html=True)
-        #st.markdown("<p style='text-align: center;'>Years and the number of donors whose last donation was in that year.</p>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center;'>Donors by Year</h4>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Years and the number of donors whose last donation was in that year.</p>", unsafe_allow_html=True)
         yearly = stats_by_year(data)
         st.bar_chart(yearly)
 
