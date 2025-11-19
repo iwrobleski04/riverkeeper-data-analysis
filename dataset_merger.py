@@ -32,7 +32,6 @@ def run():
     st.markdown("<p style='text-align: center;'>Upload the new dataset below to merge with the existing dataset.</p>", unsafe_allow_html=True)
     st.space(size="small")
 
-
     # display existing data
     st.markdown("<p style='text-align: center;'>Existing Dataset:</p>", unsafe_allow_html=True)
     st.dataframe(old_df)

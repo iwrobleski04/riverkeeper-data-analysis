@@ -79,6 +79,14 @@ def run():
         cities = stats_by_city(data)
         st.dataframe(cities)
 
+        st.markdown("<h4 style='text-align: center;'>Donors Without Location</h4>", unsafe_allow_html=True)
+        st.write("**Cities:** Number of unique cities donated from in the state  \
+                \n**Donors:** Number of unique donors in the state  \
+                \n**Total Gifts (All Time):** Total donated from the state  \
+                \n**Number of Gifts Past 18 Months:** Number of donations in the past 18 months from the state")
+        no_location = stats_no_location(data)
+        st.dataframe(no_location)
+
     elif page == "Donors by Time":
         st.markdown("<h2 style='text-align: center;'>Donors by Month and Year</h2>", unsafe_allow_html=True)
         st.space(size="medium")
