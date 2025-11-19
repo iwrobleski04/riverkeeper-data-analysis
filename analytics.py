@@ -89,7 +89,7 @@ def run():
         states = stats_by_state(data)
         st.dataframe(states)
 
-        fig = px.pie(states, names="State", values="Donors")
+        fig = px.pie(states, names=states.index, values="Donors")
         st.plotly_chart(fig)
 
         st.markdown("<h4 style='text-align: center;'>Donors by City</h4>", unsafe_allow_html=True)
