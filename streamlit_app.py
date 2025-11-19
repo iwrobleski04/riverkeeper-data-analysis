@@ -6,6 +6,11 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from modules.merge_csv import merge_csv
 
+st.set_page_config(
+    page_title="Donor Dashboard",
+    page_icon="📁"
+)
+
 # connecting to google sheets 
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds_dict = json.loads(st.secrets["google_service_account"]["creds_json"])

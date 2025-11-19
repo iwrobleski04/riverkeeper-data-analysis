@@ -1,5 +1,10 @@
 import streamlit as st
 
+st.set_page_config(
+    page_title="Donor Analytics",
+    page_icon="📊"
+)
+
 st.title("Donor Analytics")
 
 page = st.sidebar.radio(
