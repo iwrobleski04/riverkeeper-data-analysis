@@ -76,7 +76,7 @@ def run():
         with col1:
             top_amt["Status"] = top_amt["Number of Gifts Past 18 Months"].apply(lambda x: "Active" if x>0 else "Inactive")
             activity_counts = top_amt["Status"].value_counts()
-            fig = px.pie(names=activity_counts.index, values=activity_counts.values, title="Percentage of Active and Inactive Top Donors", color_discrete_sequence=px.colors.qualitative.Prism)
+            fig = px.pie(names=activity_counts.index, values=activity_counts.values, title="Activity of Top Donors", color_discrete_sequence=px.colors.qualitative.Prism)
             st.plotly_chart(fig)
 
         with col2: 
