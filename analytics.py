@@ -29,7 +29,7 @@ def run():
     # load data from sheet and clean
     data = worksheet.get_all_records()
     data = pd.DataFrame(data)
-    data = clean(data)
+    #data = clean(data)
 
     st.dataframe(data)
 
