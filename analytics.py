@@ -97,9 +97,7 @@ def run():
         states_pie.loc["Other"] = other_total
 
         # pie chart of states and donors
-        fig = px.pie(states_pie, names=states_pie.index, values="Donors")
-        colors = ["#344e41", "#588157", "#52796f" "#a3b18a", "#dad7cd"]
-        fig.update_traces(marker=dict(colors=colors))
+        fig = px.pie(states_pie, names=states_pie.index, values="Donors",  color_discrete_sequence=px.colors.qualitative.Prism)
         st.plotly_chart(fig)
 
 
