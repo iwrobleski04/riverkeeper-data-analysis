@@ -13,8 +13,6 @@ st.set_page_config(
 
 def run():
 
-    st.markdown("<h1 style='text-align: center;'>Donor Analytics</h1>", unsafe_allow_html=True)
-
     # connecting to google sheets 
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     creds_dict = json.loads(st.secrets["google_service_account"]["creds_json"])
@@ -64,16 +62,16 @@ def run():
         # Maps, regional charts...
 
     elif page == "Statistics by Time":
-        st.markdown("<h3 style='text-align: center;'>Statistics by Month and Year</h3>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center;'>Statistics by Month and Year</h2>", unsafe_allow_html=True)
         st.space(size="medium")
 
-        st.markdown("<h5 style='text-align: center;'>Donors by Year</h5>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center;'>Donors by Year</h4>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Years and the number of donors whose last donation was in that year.</p>", unsafe_allow_html=True)
         yearly = stats_by_year(data)
         st.bar_chart(yearly)
 
         st.space(size="small")
-        st.markdown("<h5 style='text-align: center;'>Donors by Month</h5>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center;'>Donors by Month</h4>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Months and the number of donors whose last donation was in that month.</p>", unsafe_allow_html=True)
         monthly = stats_by_month(data)
         st.bar_chart(monthly, sort=False)
