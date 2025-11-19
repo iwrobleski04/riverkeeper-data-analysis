@@ -1,17 +1,5 @@
 import pandas as pd
 
-def shared_and_unique_rows(df1: pd.DataFrame, df2: pd.DataFrame, col: str) -> tuple:
-    '''
-    takes two dataframes with a common column and returns a tuple of 
-        number of shared rows, 
-        number of rows unique to dataframe 1,
-        number of rows unique to dataframe 2
-    '''
-    shared = list(set(df1[col]).intersection(set(df2[col])))
-    df1_unique = df1[~df1[col].isin(shared)]
-    df2_unique = df2[~df2[col].isin(shared)]
-    return (len(shared), df1_unique.shape[0], df2_unique.shape[0])
-
 def merge_csv(df_old: pd.DataFrame, df_new: pd.DataFrame, save=True) -> pd.DataFrame:
     '''
     takes old csv filepath and updated csv filepath, merges into one dataframe, saves as a csv, and returns the merged dataframe \n
