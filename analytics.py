@@ -73,6 +73,7 @@ def run():
         yearly = stats_by_year(data)
         st.bar_chart(yearly)
 
+        st.space(size="small")
         st.markdown("<h5 style='text-align: center;'>Donors by Month</h5>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Months and the number of donors whose last donation was in that month.</p>", unsafe_allow_html=True)
         monthly = stats_by_month(data)
