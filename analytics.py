@@ -41,6 +41,11 @@ def run():
 
     if page == "Basic Statistics":
         st.markdown("<h2 style='text-align: center;'>Basic Statistics</h2>", unsafe_allow_html=True)
+        st.write("**Donors:** Number of unique donors  \
+                \n**Total Donation Amount:** Total donated among all donors  \
+                \n**Average Total Donation:** Average total donation per donor  \
+                \n**Median Total Donation:** Median total donation per donor  \
+                \n**Modal Total Donation:** Modal total donation per donor")
        
         st.markdown("<h4 style='text-align: center;'>Basic Statistics for All Donors</h4>", unsafe_allow_html=True)
         stats = basic_stats(data)
@@ -48,6 +53,7 @@ def run():
         st.space(size="small")
 
         st.markdown("<h4 style='text-align: center;'>Basic Statistics for Active Donors</h4>", unsafe_allow_html=True)
+        st.write("An **active donor** is a donor who has donated at least once within the past 18 months.")
         stats_active = active_donors(data)
         st.dataframe(stats_active)
         st.space(size="small")
