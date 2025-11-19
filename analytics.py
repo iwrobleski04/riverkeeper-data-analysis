@@ -46,22 +46,12 @@ def run():
     elif page == "Top Donors":
         st.markdown("<h2 style='text-align: center;'>Top Donors</h2>", unsafe_allow_html=True)
         
-        st.markdown("<h4 style='text-align: center;'>Top Donors by Amount Donated</h4>", unsafe_allow_html=True)
-        st.write("**Cities:** Number of unique cities donated from in the state  \
-                \n**Donors:** Number of unique donors in the state  \
-                \n**Total Gifts (All Time):** Total donated from the state  \
-                \n**Number of Gifts Past 18 Months:** Number of donations in the past 18 months from the state")
-        
+        st.markdown("<h4 style='text-align: center;'>Top 50 Donors by Total Amount Donated</h4>", unsafe_allow_html=True)
         top_amt = top_donors(data, 50)
         st.dataframe(top_amt)
         st.space(size="small")
 
-        st.markdown("<h4 style='text-align: center;'>Top Donors by Donation Frequency</h4>", unsafe_allow_html=True)
-        st.write("**Cities:** Number of unique cities donated from in the state  \
-                \n**Donors:** Number of unique donors in the state  \
-                \n**Total Gifts (All Time):** Total donated from the state  \
-                \n**Number of Gifts Past 18 Months:** Number of donations in the past 18 months from the state")
-        
+        st.markdown("<h4 style='text-align: center;'>Top 50 Donors by Donation Frequency (Past 18 Months)</h4>", unsafe_allow_html=True)
         top_freq = frequent_donors(data, 50)
         st.dataframe(top_freq)
         st.space(size="small")
