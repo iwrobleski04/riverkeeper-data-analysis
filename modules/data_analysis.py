@@ -157,7 +157,8 @@ def stats_by_state(df: pd.DataFrame) -> pd.DataFrame:
         donations in the past 18 months,
         most recent donation date
     '''
-    # copy data and drop rows where state is null
+    # copy data and drop rows where there is no state
+    data["State"] = data["State"].replace("", pd.NA).fillna(method="ffill")
     data = df.copy().dropna(subset=["State"])
 
     # group by city and create dataframe
