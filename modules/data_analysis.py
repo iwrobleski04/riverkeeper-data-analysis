@@ -214,9 +214,9 @@ def stats_no_location(df: pd.DataFrame) -> pd.DataFrame:
         Number of Gifts Past 18 Months
     '''
     res = pd.DataFrame(index = ["Country Only", "No Location"])
+    df = df.replace("", np.nan)
 
     # country only
-    df = df.replace("", np.nan)
     data = df[df["City"].isnull() & (df["State"].isnull()) & df["Country"].notnull()]
     res.loc["Country Only", "Donors"] = data["Account ID"].nunique()
     res.loc["Country Only", "Total Gifts (All Time)"] = total_donations(data)
