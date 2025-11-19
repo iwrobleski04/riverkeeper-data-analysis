@@ -7,9 +7,15 @@ from oauth2client.service_account import ServiceAccountCredentials
 from modules.merge_csv import merge_csv
 
 st.set_page_config(
-    page_title="Donor Dashboard",
-    page_icon="📁"
+    page_title="Dataset Merger",
+    page_icon="📁",
 )
+
+def page_2():
+    st.title("Page 2")
+
+pg = st.navigation(["page_1.py", page_2])
+pg.run()
 
 # connecting to google sheets 
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]

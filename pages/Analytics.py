@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Donor Analytics",
-    page_icon="📊"
+    page_icon="📊",
 )
 
 st.title("Donor Analytics")
