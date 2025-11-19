@@ -97,10 +97,10 @@ def run():
         states_pie.loc["Other"] = other_total
 
         # pie chart of states and donors
+        st.markdown("<h4 style='text-align: center;'>Percentage of Donors from Each State</h4>", unsafe_allow_html=True)
         fig = px.pie(states_pie, names=states_pie.index, values="Donors",  color_discrete_sequence=px.colors.qualitative.Prism)
         st.plotly_chart(fig)
-
-
+        st.space(size="small")
 
         st.markdown("<h4 style='text-align: center;'>Donors by City</h4>", unsafe_allow_html=True)
         st.write("**Donors:** Number of unique donors in the city  \
