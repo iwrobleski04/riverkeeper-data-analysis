@@ -41,7 +41,20 @@ def run():
 
     if page == "Basic Statistics":
         st.markdown("<h2 style='text-align: center;'>Basic Statistics</h2>", unsafe_allow_html=True)
-        # KPIs, summary tables
+       
+        st.markdown("<h4 style='text-align: center;'>Basic Statistics for All Donors</h4>", unsafe_allow_html=True)
+        stats = basic_stats(data)
+        st.dataframe(stats)
+        st.space(size="small")
+
+        st.markdown("<h4 style='text-align: center;'>Basic Statistics for Active Donors</h4>", unsafe_allow_html=True)
+        stats_active = active_donors(data)
+        st.dataframe(stats_active)
+        st.space(size="small")
+        
+        st.markdown("<h4 style='text-align: center;'>Basic Statistics for Inactive Donors</h4>", unsafe_allow_html=True)
+        stats_inactive = inactive_donors(data)
+        st.dataframe(stats_inactive)
 
     elif page == "Top Donors":
         st.markdown("<h2 style='text-align: center;'>Top Donors</h2>", unsafe_allow_html=True)
@@ -54,8 +67,6 @@ def run():
         st.markdown("<h4 style='text-align: center;'>Top 50 Donors by Donation Frequency (Past 18 Months)</h4>", unsafe_allow_html=True)
         top_freq = frequent_donors(data, 50)
         st.dataframe(top_freq)
-        st.space(size="small")
-
 
     elif page == "Donors by Location":
 
