@@ -90,7 +90,7 @@ def run():
         st.dataframe(states)
 
         # separating out states with 1% of donors from the rest for pie chart
-        threshold = 0.005
+        threshold = 0.009
         states_pie = states[states["Donors"] / states["Donors"].sum() >= threshold]
         other_states = states[states["Donors"] / states["Donors"].sum() < threshold]
         other_total = other_states["Donors"].sum()
