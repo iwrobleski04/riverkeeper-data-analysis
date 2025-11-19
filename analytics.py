@@ -89,7 +89,15 @@ def run():
         states = stats_by_state(data)
         st.dataframe(states)
 
-        fig = px.pie(states, names=states.index, values="Donors")
+        threshold = 0.02
+
+        df_big = states[states["Donors"] / states["Donors"].sum() >= threshold]
+        df_small = states[states["Donors"] / states["Donors"].sum() < threshold]
+        other_total = df_small["Donors"].sum()
+
+        df_combined = df_big.copy()
+        df_combined.loc["Other"] = other_total
+        fig = px.pie(df_combined, names=df_combined.index, values="Donors")
         st.plotly_chart(fig)
 
         st.markdown("<h4 style='text-align: center;'>Donors by City</h4>", unsafe_allow_html=True)
