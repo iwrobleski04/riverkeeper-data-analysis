@@ -188,6 +188,8 @@ def stats_by_city(df: pd.DataFrame) -> pd.DataFrame:
         most recent donation date
     '''
     # copy data and drop rows where city or state are null
+    df["State"] = df["State"].replace("", np.nan)
+    df["City"] = df["City"].replace("", np.nan)
     data =  df.copy().dropna(subset=["City", "State"])
 
     # group by city and state and create dataframe
