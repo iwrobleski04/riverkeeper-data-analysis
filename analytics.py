@@ -63,8 +63,8 @@ def run():
         st.space(size="medium")
 
         st.markdown("<h4 style='text-align: center;'>Donors by State</h4>", unsafe_allow_html=True)
-        st.write("_Cities:_ Number of unique cities donated from in the state")
-        st.write("Donors: Number of unique donors in the state")
+        st.write("**Cities:** Number of unique cities donated from in the state\n**Donors:** Number of unique donors in the state")
+        st.write("**Donors:** Number of unique donors in the state")
         st.write("Total Gifts (All Time): Total donations from the state")
         st.write("Number of Gifts Past 18 Months: Total donations in the past 18 months from the state")
         states = stats_by_state(data)
