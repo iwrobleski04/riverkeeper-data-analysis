@@ -31,6 +31,8 @@ def run():
     data = pd.DataFrame(data)
     data = clean(data)
 
+    st.dataframe(data)
+
     page = st.sidebar.radio(
         "Select a Category of Analytics:",
         [
