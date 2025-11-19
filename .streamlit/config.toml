@@ -1,5 +1,6 @@
 [theme]
 primaryColor = '#027DA4' # Accent color for interactive elements
-secondaryBackgroundColor = '#B9F1C0' # Background color for sidebar and most widgets
+backgroundColor = '#0D0630' # Background color for the main content area
+secondaryBackgroundColor = '#007633' # Background color for sidebar and most widgets
 textColor = '#FFFFFF'
 font = "serif"
