@@ -29,17 +29,14 @@ def run():
     data = pd.DataFrame(data)
     clean(data)
 
-    page = st.sidebar.radio(
-        "Select a Category of Analytics:",
-        [
+    tab1, tab2, tab3, tab4 = st.tabs([
             "Basic Statistics",
             "Top Donors",
             "Donors by Location",
             "Donors by Time"
-        ]
-    )
+        ])
 
-    if page == "Basic Statistics":
+    with tab1:
         st.markdown("<h2 style='text-align: center;'>Basic Statistics</h2>", unsafe_allow_html=True)
         st.write("**Donors:** Number of unique donors  \
                 \n**Total Donation Amount:** Total donated among all donors  \
@@ -63,7 +60,7 @@ def run():
         stats_inactive = inactive_donors(data)
         st.dataframe(stats_inactive)
 
-    elif page == "Top Donors":
+    with tab2:
         st.markdown("<h2 style='text-align: center;'>Top Donors</h2>", unsafe_allow_html=True)
         
         st.markdown("<h4 style='text-align: center;'>Top 50 Donors by Total Amount Donated</h4>", unsafe_allow_html=True)
@@ -75,7 +72,7 @@ def run():
         top_freq = frequent_donors(data, 50)
         st.dataframe(top_freq)
 
-    elif page == "Donors by Location":
+    with tab3:
 
         st.markdown("<h2 style='text-align: center;'>Donors by State and City</h2>", unsafe_allow_html=True)
         st.space(size="medium")
@@ -104,7 +101,7 @@ def run():
         no_location = stats_no_location(data)
         st.dataframe(no_location)
 
-    elif page == "Donors by Time":
+    with tab4:
         st.markdown("<h2 style='text-align: center;'>Donors by Month and Year</h2>", unsafe_allow_html=True)
         st.space(size="medium")
 
