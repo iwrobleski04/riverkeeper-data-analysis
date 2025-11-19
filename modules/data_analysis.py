@@ -5,10 +5,10 @@ import calendar
 
 getcontext().prec = 32
 
-def categorize_donors(df: pd.DataFrame) -> pd.Series:
+def categorize_donors(df: pd.DataFrame) -> pd.DataFrame:
     '''
     adds a column to the dataset categorizing donors based on amount
-    returns value counts for categories
+    returns the new dataframe with that column
     categories come from riverkeeper's website: https://engage.riverkeeper.org/give:
         donors of $20 or more receive email newsletters, invitations, etc.
         donors of $50 or more receive the opportunity to vote on the Board of Directors at an annual Membership meeting
