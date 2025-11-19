@@ -28,6 +28,7 @@ def clean(df: pd.DataFrame) -> None:
     df["Total Gifts (All Time)"] = pd.to_numeric(df["Total Gifts (All Time)"])
     df["Number of Gifts Past 18 Months"] = pd.to_numeric(df["Number of Gifts Past 18 Months"])
     df["Last Gift Date"] = pd.to_datetime(df["Last Gift Date"])
+    df = df.replace("", np.nan)
     df = categorize_donors(df)
 
 # basic stats
@@ -158,7 +159,6 @@ def stats_by_state(df: pd.DataFrame) -> pd.DataFrame:
         most recent donation date
     '''
     # copy data and drop rows where there is no state
-    df["State"] = df["State"].replace("", np.nan)
     data = df.copy().dropna(subset=["State"])
 
     # group by city and create dataframe
@@ -189,8 +189,6 @@ def stats_by_city(df: pd.DataFrame) -> pd.DataFrame:
         most recent donation date
     '''
     # copy data and drop rows where city or state are null
-    df["State"] = df["State"].replace("", np.nan)
-    df["City"] = df["City"].replace("", np.nan)
     data =  df.copy().dropna(subset=["City", "State"])
 
     # group by city and state and create dataframe
@@ -214,7 +212,6 @@ def stats_no_location(df: pd.DataFrame) -> pd.DataFrame:
         Number of Gifts Past 18 Months
     '''
     res = pd.DataFrame(index = ["Country Only", "No Location"])
-    df = df.replace("", np.nan)
 
     # country only
     data = df[df["City"].isnull() & (df["State"].isnull()) & df["Country"].notnull()]
