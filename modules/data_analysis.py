@@ -30,7 +30,6 @@ def clean(df: pd.DataFrame) -> None:
     df["Last Gift Date"] = pd.to_datetime(df["Last Gift Date"])
     df["Last Gift Date"] = df["Last Gift Date"].dt.date
     df = categorize_donors(df)
-    df = df.replace("", np.nan)
 
 
 # basic stats
@@ -107,6 +106,7 @@ def top_donors(df: pd.DataFrame, n: int) -> pd.DataFrame:
         last gift date,
         donations in past 18 months
     '''
+    df = df.replace("", np.nan)
     sorted_donations = df.copy().sort_values(by="Total Gifts (All Time)", ascending=False)
     top_donors = sorted_donations[:n].copy()
     top_donors["Total Gifts (All Time)"] = top_donors["Total Gifts (All Time)"].apply(lambda x: '${:,.2f}'.format(x))
@@ -124,6 +124,7 @@ def frequent_donors(df: pd.DataFrame, n: int) -> pd.DataFrame:
         last gift date,
         donations in past 18 months
     '''
+    df = df.replace("", np.nan)
     sorted_donations = df.copy().sort_values(by=["Number of Gifts Past 18 Months", "Total Gifts (All Time)"], ascending=False)
     frequent_donors = sorted_donations[:n].copy()
     frequent_donors["Total Gifts (All Time)"] = frequent_donors["Total Gifts (All Time)"].apply(lambda x: '${:,.2f}'.format(x))
@@ -192,6 +193,7 @@ def stats_by_city(df: pd.DataFrame) -> pd.DataFrame:
         most recent donation date
     '''
     # copy data and drop rows where city or state are null
+    df = df.replace("", np.nan)
     data =  df.copy().dropna(subset=["City", "State"])
 
     # group by city and state and create dataframe
