@@ -195,6 +195,7 @@ def stats_by_city(df: pd.DataFrame) -> pd.DataFrame:
     # group by city and state and create dataframe
     g = data.groupby(["City", "State"])
     res = pd.DataFrame({
+        "Cities" : g["City"].nunique(),
         "Donors" : g["Account ID"].nunique(),
         "Total Gifts (All Time)" : g["Total Gifts (All Time)"].sum(),
         "Number of Gifts Past 18 Months" : g["Number of Gifts Past 18 Months"].sum().astype(int)
