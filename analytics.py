@@ -76,6 +76,10 @@ def run():
         fig = px.pie(names=activity_counts.index, values=activity_counts.values, title="Percentage of Active and Inactive Top Donors", color_discrete_sequence=px.colors.qualitative.Prism)
         st.plotly_chart(fig)
 
+        state_counts = top_amt["State"].value_counts()
+        fig = px.pie(names=state_counts.index, values=state_counts.values, title="States of Top Donors", color_discrete_sequence=px.colors.qualitative.Prism)
+        st.plotly_chart(fig)
+
         st.markdown("<h4 style='text-align: center;'>Top 50 Donors by Donation Frequency (Past 18 Months)</h4>", unsafe_allow_html=True)
         top_freq = frequent_donors(data, 50)
         st.dataframe(top_freq)
