@@ -89,15 +89,19 @@ def run():
         states = stats_by_state(data)
         st.dataframe(states)
 
+        # separating out states with 1% of donors from the rest for pie chart
         threshold = 0.01
+        states_pie = states[states["Donors"] / states["Donors"].sum() >= threshold]
+        other_states = states[states["Donors"] / states["Donors"].sum() < threshold]
+        other_total = other_states["Donors"].sum()
+        states_pie.loc["Other"] = other_total
 
-        df_big = states[states["Donors"] / states["Donors"].sum() >= threshold]
-        df_small = states[states["Donors"] / states["Donors"].sum() < threshold]
-        other_total = df_small["Donors"].sum()
+        states_no_other = states_pie[states_pie.index != "Other"]
+        states_other = states_pie[states_pie.index == "Other"]
+        states_ordered = pd.concat([states_no_other, states_other])
 
-        df_combined = df_big.copy()
-        df_combined.loc["Other"] = other_total
-        fig = px.pie(df_combined, names=df_combined.index, values="Donors")
+        # pie chart of states and donors
+        fig = px.pie(states_pie, names=states_ordered, values="Donors")
         st.plotly_chart(fig)
 
         st.markdown("<h4 style='text-align: center;'>Donors by City</h4>", unsafe_allow_html=True)
