@@ -68,10 +68,11 @@ def run():
         st.text("")
         st.text("")
 
-        st.markdown("<h5 style='text-align: center;'>Donors by Year</h5>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>This bar chart shows years and the number of donors whose last donation was in that year.</p>", unsafe_allow_html=True)
-
         col1, col2 = st.columns([1, 1])
         with col1:
+            st.markdown("<h5 style='text-align: center;'>Donors by Year</h5>", unsafe_allow_html=True)
+            st.markdown("<p style='text-align: center;'>Years and the number of donors whose last donation was in that year.</p>", unsafe_allow_html=True)
+
+
             yearly = stats_by_year(data)
             st.bar_chart(yearly)
