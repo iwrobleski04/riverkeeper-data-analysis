@@ -20,7 +20,6 @@ def load_data():
 def save_data(df):
     df.to_csv(PATH, index=False)
 
-
 def run():
 
     st.set_page_config(

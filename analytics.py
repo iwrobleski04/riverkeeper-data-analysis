@@ -11,23 +11,11 @@ st.set_page_config(
 )
 
 def run():
-    st.write("Hello World")
-'''
-    # connecting to google sheets 
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds_dict = json.loads(st.secrets["google_service_account"]["creds_json"])
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
-    gc = gspread.authorize(creds)
 
-    # opening sheet
-    sheet_name = "Riverkeeper_Donors"
-    sh = gc.open(sheet_name)
-    worksheet = sh.sheet1
+    # clean data
+    data = clean(st.session_state.df)
 
-    # load data from sheet and clean
-    data = worksheet.get_all_records()
-    data = pd.DataFrame(data)
-    clean(data)
+    # convert to biokind format
 
     tab1, tab2, tab3, tab4 = st.tabs([
             "Basic Statistics",
@@ -140,4 +128,4 @@ def run():
         st.markdown("<h4 style='text-align: center;'>Donors by Month</h4>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Months and the number of donors whose last donation was in that month.</p>", unsafe_allow_html=True)
         monthly = stats_by_month(data)
-        st.bar_chart(monthly, x_label="Month", y_label="Donors", color="#007633", sort=False)'''
+        st.bar_chart(monthly, x_label="Month", y_label="Donors", color="#007633", sort=False)
