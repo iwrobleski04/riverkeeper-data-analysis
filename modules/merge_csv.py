@@ -1,6 +1,6 @@
 import pandas as pd
 
-def merge_csv(df_old: pd.DataFrame, df_new: pd.DataFrame, save=True) -> pd.DataFrame:
+def merge_csv(df_old: pd.DataFrame, df_new: pd.DataFrame, save=True) -> tuple[pd.DataFrame, pd.DataFrame]:
     '''
     takes old csv filepath and updated csv filepath, merges into one dataframe, saves as a csv, and returns the merged dataframe \n
     columns of csvs should be 
@@ -15,6 +15,10 @@ def merge_csv(df_old: pd.DataFrame, df_new: pd.DataFrame, save=True) -> pd.DataF
         Number of Gifts Past 18 Months
     and any column except Account ID can appear in only one csv
     '''
+
+    # if the old df is empty, just return the new one
+    if df_old.empty:
+        return df_new, df_new
 
     # make sure dataframe columns match
     df_old.rename(columns={"Total Gifts Amount": "Total Gifts (All Time)"}, inplace=True)
