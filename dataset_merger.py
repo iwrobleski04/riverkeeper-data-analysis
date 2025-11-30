@@ -30,7 +30,7 @@ def run():
     )
 
     st.header("Dataset Merger")
-    st.subheader("Upload a new dataset below to merge with the existing dataset.")
+    st.write("Upload a new dataset below to merge with the existing dataset.")
     st.space(size="small")
 
     # load dataset into the user's session if it does not already exist
@@ -44,7 +44,7 @@ def run():
 
         # merge datasets
         new_df = pd.read_csv(uploaded_file)
-        merged_df, new_rows_df = merge_csv(st.session_state.df, new_df, save=False)
+        merged_df, _ = merge_csv(st.session_state.df, new_df, save=False)
 
         # save the merged data and update the session state
         save_data(merged_df)
@@ -54,5 +54,5 @@ def run():
         st.space(size="small")
 
         # display new data
-        st.markdown("<p style='text-align: center;'>Merged Dataset:</p>", unsafe_allow_html=True)
+        st.write("Merged Dataset:")
         st.dataframe(merged_df)
