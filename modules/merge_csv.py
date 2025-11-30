@@ -18,8 +18,6 @@ def merge_csv(df_old: pd.DataFrame, df_new: pd.DataFrame, save=True) -> pd.DataF
 
     # make sure dataframe columns match
     df_old.rename(columns={"Total Gifts Amount": "Total Gifts (All Time)"}, inplace=True)
-    print(df_old.columns)
-    print(df_new.columns)
 
     # display number of shared rows and rows unique to each dataset
     shared = list(set(df_old["Account ID"]).intersection(set(df_new["Account ID"])))
